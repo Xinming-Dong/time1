@@ -1,5 +1,5 @@
 <div class="row">
   <div class="col-12">
-    <h1>Welcome to the Timesheet App</h1>
+    <p>hi, this is index.html.eex</p>
   </div>
 </div>

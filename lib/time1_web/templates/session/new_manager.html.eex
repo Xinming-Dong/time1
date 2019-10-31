@@ -1,0 +1,14 @@
+<%= form_for @conn, Routes.session_path(@conn, :create), fn f -> %>
+  <div class="form-group">
+    <%= label f, :email %>
+    <%= text_input f, :email, class: "form-control" %>
+    <%= error_tag f, :email %>
+  </div>
+  <div>
+    <p>You are a manager.</p>
+  </div>
+
+  <div>
+    <%= submit "Log In", class: "btn btn-primary" %>
+  </div>
+<% end %>

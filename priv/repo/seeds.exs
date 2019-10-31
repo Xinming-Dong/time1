@@ -9,3 +9,8 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+alias Time1.Repo
+alias Time1.Managers.Manager
+
+Repo.insert!(%Manager{name: "Alice", email: "alice@acme.com"})
+Repo.insert!(%Manager{name: "Bob", email: "bob@acme.com"})
