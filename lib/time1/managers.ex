@@ -107,4 +107,17 @@ defmodule Time1.Managers do
   end
 
   def get_manager(id), do: Repo.get(Manager, id)
+
+  def authenticate(email) do
+    manager = Repo.get_by(Manager, email: email)
+    if manager do
+      manager
+    else
+      nil 
+    end
+    # case Argon2.check_pass(user, pass) do
+    #   {:ok, user} -> user
+    #   _ -> nil
+    # end
+  end
 end

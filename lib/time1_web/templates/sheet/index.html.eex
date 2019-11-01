@@ -1,0 +1,70 @@
+<h1>New TimeSheet</h1>
+<%= form_for @conn, Routes.task_path(@conn, :create), fn f -> %>
+  <div class="form-inline">
+    <%= label f, :date, class: "mb-2 mr-sm-2" %>
+    <%= date_select f, :date, class: "form_control mr-sm-2" %>
+    <%= error_tag f, :date %>
+  </div>
+
+  <div class="form-inline">
+    <%= label f, :task1, class: "mb-2 mr-sm-2" %>
+    <%= select f, :job_code1, @job_codes, class: "form_control mr-sm-2" %>
+    <%= label f, :hours, class: "mb-2 mr-sm-2" %>
+    <%= text_input f, :hours1, class: "form_control mr-sm-2" %>
+  </div>
+
+  <div class="form-inline">
+    <%= label f, :task2, class: "mb-2 mr-sm-2" %>
+    <%= select f, :job_code2, @job_codes, class: "form_control mr-sm-2" %>
+    <%= label f, :hours, class: "mb-2 mr-sm-2" %>
+    <%= text_input f, :hours2, class: "form_control mr-sm-2" %>
+  </div>
+
+  <div class="form-inline">
+    <%= label f, :task3, class: "mb-2 mr-sm-2" %>
+    <%= select f, :job_code3, @job_codes, class: "form_control mr-sm-2" %>
+    <%= label f, :hours, class: "mb-2 mr-sm-2" %>
+    <%= text_input f, :hours3, class: "form_control mr-sm-2" %>
+  </div>
+
+  <div class="form-inline">
+    <%= label f, :task4, class: "mb-2 mr-sm-2" %>
+    <%= select f, :job_code4, @job_codes, class: "form_control mr-sm-2" %>
+    <%= label f, :hours, class: "mb-2 mr-sm-2" %>
+    <%= text_input f, :hours4, class: "form_control mr-sm-2" %>
+  </div>
+
+  <div class="form-inline">
+    <%= label f, :task5, class: "mb-2 mr-sm-2" %>
+    <%= select f, :job_code5, @job_codes, class: "form_control mr-sm-2" %>
+    <%= label f, :hours, class: "mb-2 mr-sm-2" %>
+    <%= text_input f, :hours5, class: "form_control mr-sm-2" %>
+  </div>
+
+  <div class="form-inline">
+    <%= label f, :task6, class: "mb-2 mr-sm-2" %>
+    <%= select f, :job_code6, @job_codes, class: "form_control mr-sm-2" %>
+    <%= label f, :hours, class: "mb-2 mr-sm-2" %>
+    <%= text_input f, :hours6, class: "form_control mr-sm-2" %>
+  </div>
+
+  <div class="form-inline">
+    <%= label f, :task7, class: "mb-2 mr-sm-2" %>
+    <%= select f, :job_code7, @job_codes, class: "form_control mr-sm-2" %>
+    <%= label f, :hours, class: "mb-2 mr-sm-2" %>
+    <%= text_input f, :hours7, class: "form_control mr-sm-2" %>
+  </div>
+
+  <div class="form-inline">
+    <%= label f, :task8, class: "mb-2 mr-sm-2" %>
+    <%= select f, :job_code8, @job_codes, class: "form_control mr-sm-2" %>
+    <%= label f, :hours, class: "mb-2 mr-sm-2" %>
+    <%= text_input f, :hours8, class: "form_control mr-sm-2" %>
+  </div>
+  <div>
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<span><%= link "Back", to: Routes.page_path(@conn, :worker_page, job_codes: @job_codes) %></span>
+

@@ -1,11 +1,8 @@
-<%= form_for @conn, Routes.session_path(@conn, :create, type: "manager"), fn f -> %>
+<%= form_for @conn, Routes.session_path(@conn, :create, type: "worker"), fn f -> %>
   <div class="form-group">
     <%= label f, :email %>
     <%= text_input f, :email, class: "form-control" %>
     <%= error_tag f, :email %>
-  </div>
-  <div>
-    <p>You are a manager.</p>
   </div>
 
   <div>

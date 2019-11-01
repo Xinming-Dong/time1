@@ -4,7 +4,7 @@ defmodule Time1Web.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
-    plug Time1Web.Plugs.FetchCurrentManager
+    plug LensWeb.Plugs.FetchCurrentUser
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
@@ -19,7 +19,20 @@ defmodule Time1Web.Router do
 
     get "/", PageController, :index
     get "/manager_page", PageController, :manager_page
+    get "/worker_page", PageController, :worker_page
     resources "/managers", ManagerController
+    resources "/workers", WorkerController
+    resources "/jobs", JobController
+    resources "/sheets", SheetController
+    resources "/tasks", TaskController
+
+    get "/sheet/worker_sheet_list", SheetController, :worker_sheet_list
+    get "/sheet/worker_task_list", SheetController, :worker_task_list
+    get "/sheet/manager_sheet_list", SheetController, :manager_sheet_list
+    get "/sheet/manager_task_list", SheetController, :manager_task_list
+
+    get "/worker/manager_worker_list", WorkerController, :manager_worker_list
+    
 
     resources "/sessions", SessionController, 
       only: [:new, :create, :delete], singleton: true

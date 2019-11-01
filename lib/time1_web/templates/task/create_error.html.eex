@@ -1,0 +1,4 @@
+<h1> error page </h1>
+<p> Your total working hour in shour sheet is 
+<%= @hour_sum%>
+</p>

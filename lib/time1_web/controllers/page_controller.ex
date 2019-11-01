@@ -10,4 +10,9 @@ defmodule Time1Web.PageController do
     IO.puts "manager page function in page controller."
     render(conn, "manager_page.html")
   end
+
+  def worker_page(conn, %{"job_codes" => job_codes}) do
+    IO.puts "worker page function in page controller."
+    render(conn, "worker_page.html", job_codes: job_codes)
+  end
 end

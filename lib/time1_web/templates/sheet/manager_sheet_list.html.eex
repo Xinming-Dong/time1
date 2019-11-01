@@ -1,0 +1,10 @@
+<h1> All Sheets </h1>
+<p> Worker: </p>
+<%= @worker_id%>
+<%= for sheet <- @sheets do %>
+    <tr>
+      <td><%= sheet.sheet_id %></td>
+      <td><%= sheet.date %></td>
+      <%= link(sheet.date, to: Routes.sheet_path(@conn, :manager_task_list, sheet_id: sheet.sheet_id)) %>
+    </tr>
+<% end %>

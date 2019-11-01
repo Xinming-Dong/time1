@@ -11,6 +11,15 @@
 # and so on) as they will fail if something goes wrong.
 alias Time1.Repo
 alias Time1.Managers.Manager
+alias Time1.Workers.Worker
+alias Time1.Jobs.Job
 
-Repo.insert!(%Manager{name: "Alice", email: "alice@acme.com"})
-Repo.insert!(%Manager{name: "Bob", email: "bob@acme.com"})
+Repo.insert!(%Manager{name: "Alice Anderson", email: "alice@acme.com"})
+Repo.insert!(%Manager{name: "Bob Anderson", email: "bob@acme.com"})
+
+Repo.insert!(%Worker{name: "Carol Anderson", email: "carol@acme.com", manager_id: 1})
+Repo.insert!(%Worker{name: "Dave Anderson", email: "dave@acme.com", manager_id: 2})
+
+Repo.insert!(%Job{name: "Cyborg Arm", job_code: "VAOR-01", budget: 20, description: "Alice", manager_id: 1})
+Repo.insert!(%Job{name: "Sobriety Pill", job_code: "VAOR-02", budget: 45, description: "Bob", manager_id: 2})
+Repo.insert!(%Job{name: "Rat Cancer", job_code: "VAOR-03", budget: 12, description: "Alice", manager_id: 1})

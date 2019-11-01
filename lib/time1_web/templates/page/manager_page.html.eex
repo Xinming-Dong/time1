@@ -1,5 +1,5 @@
 <div class="row">
   <div class="col-12">
-    <p>this is the manager page</p>
+    <%= link("Manage My Workers", to: Routes.worker_path(@conn, :manager_worker_list)) %>
   </div>
 </div>

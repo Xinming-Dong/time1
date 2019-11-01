@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>All Tasks</h2>           
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Job ID</th>
+        <th>Hours</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%= for {task} <- @tasks do %>
+      <tr>
+        <td><%= task.job_code %></td>
+        <td><%= task.hour %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

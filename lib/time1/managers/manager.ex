@@ -7,6 +7,8 @@ defmodule Time1.Managers.Manager do
     field :email, :string
     field :name, :string
     # field :password_hash, :string
+    has_many :workers, Time1.Workers.Worker
+    has_many :jobs, Time1.Jobs.Job
 
     timestamps()
   end

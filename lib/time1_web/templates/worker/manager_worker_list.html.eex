@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>All Workers You Manage</h2>           
+  <table class="table table-striped">
+    <tbody>
+    <%= for worker <- @workers do %>
+      <tr>
+        <td><%= link(worker.worker_name, to: Routes.sheet_path(@conn, :manager_sheet_list, worker_id: worker.worker_id)) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
