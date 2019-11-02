@@ -62,9 +62,9 @@
     <%= text_input f, :hours8, class: "form_control mr-sm-2" %>
   </div>
   <div>
-    <%= submit "Submit", class: "btn btn-primary" %>
+    <p><%= submit "Submit", class: "btn btn-outline-primary" %></p>
   </div>
 <% end %>
 
-<span><%= link "Back", to: Routes.page_path(@conn, :worker_page, job_codes: @job_codes) %></span>
+<span><p><%= link "Back", class: "btn btn-outline-primary", to: Routes.page_path(@conn, :worker_page, job_codes: @job_codes) %></p></span>
 

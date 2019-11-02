@@ -63,7 +63,6 @@ defmodule Time1Web.WorkerController do
   def manager_worker_list(conn, _params) do
     manager_id = get_session(conn, :manager_id)
     workers = Time1.Workers.get_worker_by_manager_id(manager_id)
-    IO.inspect workers
 
     render(conn, "manager_worker_list.html", workers: workers)
   end

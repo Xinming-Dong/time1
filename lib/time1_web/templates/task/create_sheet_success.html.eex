@@ -1,0 +1,17 @@
+<h1>Show Sheet</h1>
+
+<ul>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @sheet.date %>
+  </li>
+
+  <li>
+    <strong>Approve status:</strong>
+    <%= @sheet.approve_status %>
+  </li>
+
+</ul>
+
+<span><%= link "Back to My Home Page", to: Routes.page_path(@conn, :worker_page, job_codes: @job_codes)%></span>

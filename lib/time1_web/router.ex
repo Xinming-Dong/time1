@@ -32,7 +32,9 @@ defmodule Time1Web.Router do
     get "/sheet/manager_sheet_list", SheetController, :manager_sheet_list
     get "/sheet/manager_task_list", SheetController, :manager_task_list
     get "/sheet/manager_approve_sheet", SheetController, :manager_approve_sheet
+    get "/sheet/create_sheet_success", SheetController, :create_sheet_success
 
+  
     get "/worker/manager_worker_list", WorkerController, :manager_worker_list
     
 

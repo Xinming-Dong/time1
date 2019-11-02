@@ -46,12 +46,10 @@ defmodule Time1Web.TaskController do
     hour_sum = Enum.reduce(hour, fn h, acc -> h + acc end)
     if hour_sum === 8 do
       worker_id = get_session(conn, :worker_id)
-      # IO.puts "aaaaaaaaaaaaaaaa"
-      # IO.puts worker_id
       case Time1.Sheets.create_sheet(%{worker_id: worker_id, date: date, approve_status: false}) do
         {:ok, sheet} ->
           entry = Enum.zip(code, hour)
-          # job_id = Time1.Jobs.get_jobid_by_code(code)
+          job_codes = Time1.Jobs.list_job_codes()
           Enum.map(entry, fn {c, h} -> {
             if h != 0 do
               IO.inspect Time1.Tasks.create_task(%{sheet_id: sheet.id, job_id: Time1.Jobs.get_jobid_by_code(c), hour: h, note: "a task created."})
@@ -59,7 +57,7 @@ defmodule Time1Web.TaskController do
           } end)
           conn
           |> put_flash(:info, "Sheet created successfully.")
-          |> redirect(to: Routes.sheet_path(conn, :show, sheet))
+          render(conn, "create_sheet_success.html", sheet: sheet, job_codes: job_codes)
         {:error, %Ecto.Changeset{} = changeset} ->
           conn
           |> put_flash(:error, "Creation error.")

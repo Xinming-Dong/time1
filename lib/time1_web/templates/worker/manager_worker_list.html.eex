@@ -9,4 +9,5 @@
     <% end %>
     </tbody>
   </table>
+  <%= link("Back", class: "btn btn-outline-primary btn-block", to: Routes.page_path(@conn, :manager_page)) %>
 </div>

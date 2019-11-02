@@ -10,18 +10,20 @@ defmodule Time1Web.SheetController do
   end
 
   def worker_sheet_list(conn, _params) do
+    job_codes = Time1.Jobs.list_job_codes()
     worker_id = get_session(conn, :worker_id)
     sheets = Time1.Sheets.get_sheet_by_worker_id(worker_id)
-    render(conn, "worker_sheet_list.html", worker_id: worker_id, sheets: sheets)
+    render(conn, "worker_sheet_list.html", worker_id: worker_id, sheets: sheets, job_codes: job_codes)
   end
 
   def worker_task_list(conn, %{"sheet_id" => sheet_id}) do
+    job_codes = Time1.Jobs.list_job_codes()
     {a, _} = Integer.parse(sheet_id)
     tasks = Time1.Tasks.get_task_by_sheet_id(a)
     tasks = Enum.map(tasks, fn ts -> {
       %{hour: ts.hour, job_code: Time1.Jobs.get_code_by_id(ts.job_id)}
     } end)
-    render(conn, "worker_task_list.html", sheet_id: sheet_id, tasks: tasks)
+    render(conn, "worker_task_list.html", sheet_id: sheet_id, tasks: tasks, job_codes: job_codes)
   end
 
   def manager_sheet_list(conn, %{"worker_id"=> worker_id}) do
@@ -30,13 +32,13 @@ defmodule Time1Web.SheetController do
     render(conn, "manager_sheet_list.html", worker_id: worker_id, sheets: sheets)
   end
 
-  def manager_task_list(conn, %{"sheet_id" => sheet_id}) do
+  def manager_task_list(conn, %{"sheet_id" => sheet_id, "worker_id" => worker_id}) do
     {a, _} = Integer.parse(sheet_id)
     tasks = Time1.Tasks.get_task_by_sheet_id(a)
     tasks = Enum.map(tasks, fn ts -> {
       %{hour: ts.hour, job_code: Time1.Jobs.get_code_by_id(ts.job_id)}
     } end)
-    render(conn, "manager_task_list.html", sheet_id: sheet_id, tasks: tasks)
+    render(conn, "manager_task_list.html", sheet_id: sheet_id, tasks: tasks, worker_id: worker_id)
   end
 
   def manager_approve_sheet(conn, %{"sheet_id" => sheet_id}) do

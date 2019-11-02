@@ -20,6 +20,6 @@
 
   <div class="col-12">
     <p><%= link("Approve", class: "btn btn-outline-primary btn-block", to: Routes.sheet_path(@conn, :manager_approve_sheet, sheet_id: @sheet_id)) %></p>
-    
+    <p><%= link("Back", class: "btn btn-outline-primary btn-block", to: Routes.sheet_path(@conn, :manager_sheet_list, worker_id: @worker_id)) %></p>
   </div>
 </div>
