@@ -71,9 +71,6 @@ defmodule Time1Web.TaskController do
       |> put_flash(:error, "Total working hour should be 8.")
       render(conn, "create_error.html", hour_sum: hour_sum)
     end
-
-    # tasks = Tasks.list_tasks()
-    # render(conn, "index.html", tasks: tasks)
   end
 
   def show(conn, %{"id" => id}) do

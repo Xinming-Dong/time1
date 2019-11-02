@@ -1,9 +1,10 @@
 <div class="container">
-  <h2>All Tasks</h2>           
+  <h2>All Tasks</h2>      
+  <p><%= @sheet_id %></h2>
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Job ID</th>
+        <th>Job Code</th>
         <th>Hours</th>
       </tr>
     </thead>
@@ -16,4 +17,9 @@
     <% end %>
     </tbody>
   </table>
+
+  <div class="col-12">
+    <p><%= link("Approve", class: "btn btn-outline-primary btn-block", to: Routes.sheet_path(@conn, :manager_approve_sheet, sheet_id: @sheet_id)) %></p>
+    
+  </div>
 </div>

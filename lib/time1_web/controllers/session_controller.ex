@@ -45,9 +45,18 @@ defmodule Time1Web.SessionController do
       end
     end
   
-    def delete(conn, _params) do
+    def delete(conn, %{"type" => type}) when type == "worker" do
+      conn
+      |> delete_session(:worker_id)
+      |> delete_session(:worker_email)
+      |> put_flash(:info, "Logged out.")
+      |> redirect(to: Routes.page_path(conn, :index))
+    end
+
+    def delete(conn, %{"type" => type}) when type == "manager" do
       conn
       |> delete_session(:manager_id)
+      |> delete_session(:manager_email)
       |> put_flash(:info, "Logged out.")
       |> redirect(to: Routes.page_path(conn, :index))
     end

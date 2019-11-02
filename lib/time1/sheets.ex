@@ -107,4 +107,10 @@ defmodule Time1.Sheets do
     query = from s in "sheets", where: s.worker_id == ^id, select: %{sheet_id: s.id, date: s.date}
     Repo.all(query)
   end
+
+  def approve_sheet_by_id(sheet_id) do
+    # sheet = Repo.get!(Sheet, sheet_id)
+    from(s in Sheet, where: s.id == ^sheet_id)
+    |> Repo.update_all(set: [approve_status: true])
+  end
 end

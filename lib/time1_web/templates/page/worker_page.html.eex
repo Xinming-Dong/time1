@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12">
-    <%= link("Create a Sheet", to: Routes.sheet_path(@conn, :index, job_codes: @job_codes)) %>
-    <%= link("View my sheets", to: Routes.sheet_path(@conn, :worker_sheet_list)) %>
+    <p><%= link("Create a Sheet", class: "btn btn-outline-primary btn-block", to: Routes.sheet_path(@conn, :index, job_codes: @job_codes)) %></p>
+    <p><%= link("View my sheets", class: "btn btn-outline-primary btn-block", to: Routes.sheet_path(@conn, :worker_sheet_list)) %></p>
   </div>
 </div>

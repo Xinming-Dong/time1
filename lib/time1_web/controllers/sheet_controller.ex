@@ -39,6 +39,18 @@ defmodule Time1Web.SheetController do
     render(conn, "manager_task_list.html", sheet_id: sheet_id, tasks: tasks)
   end
 
+  def manager_approve_sheet(conn, %{"sheet_id" => sheet_id}) do
+    # change sheet approve_status
+    IO.puts "aaaaaprove"
+    IO.inspect sheet_id
+    {a, _} = Integer.parse(sheet_id)
+    
+    Time1.Sheets.approve_sheet_by_id(a)
+    render(conn, "manager_approve_sheet.html")
+
+    # change job budget
+  end
+
   def new(conn, _params) do
     changeset = Sheets.change_sheet(%Sheet{})
     render(conn, "new.html", changeset: changeset)

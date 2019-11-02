@@ -15,16 +15,20 @@
       <div class="row">
         
         <div class="col-4">
-          <%# <%= if @current_worker do %> %>
-            <%# Worker: <%= @current_worker.name %> %>
-            <%# (<%= link("Logout", to: Routes.session_path(@conn, :delete), %>
-              <%# method: :delete) %> %>
-          <%# <% else %> %>
-            <%= link("Worker Login", to: Routes.session_path(@conn, :new, type: "worker")) %>
-          <%# <% end %> %>
-        </div>
-        <div class="col-4">
-          <%= link("Manager Login", to: Routes.session_path(@conn, :new, type: "manager")) %>
+          <%= if @current_worker do %>
+            Worker: <%= @current_worker.name %>
+            (<%= link("Logout", to: Routes.session_path(@conn, :delete, type: "worker"),
+              method: :delete) %>)
+          <% else %>
+            <%= if @current_manager do %>
+              Manager: <%= @current_manager.name %>
+              (<%= link("Logout", to: Routes.session_path(@conn, :delete, type: "manager"),
+                method: :delete) %>)
+            <% else %>
+              <p><%= link("Worker Login", class: "btn btn-outline-primary btn-block", to: Routes.session_path(@conn, :new, type: "worker")) %></p>
+              <p><%= link("Manager Login", class: "btn btn-outline-primary btn-block", to: Routes.session_path(@conn, :new, type: "manager")) %></p>
+            <% end %>
+          <% end %>
         </div>
       </div>
 

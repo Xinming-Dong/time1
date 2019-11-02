@@ -4,7 +4,8 @@ defmodule Time1Web.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
-    plug LensWeb.Plugs.FetchCurrentUser
+    plug Time1Web.Plugs.FetchCurrentWorker
+    plug Time1Web.Plugs.FetchCurrentManager
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
@@ -30,6 +31,7 @@ defmodule Time1Web.Router do
     get "/sheet/worker_task_list", SheetController, :worker_task_list
     get "/sheet/manager_sheet_list", SheetController, :manager_sheet_list
     get "/sheet/manager_task_list", SheetController, :manager_task_list
+    get "/sheet/manager_approve_sheet", SheetController, :manager_approve_sheet
 
     get "/worker/manager_worker_list", WorkerController, :manager_worker_list
     
